@@ -1,0 +1,58 @@
+
+
+
+############ GET LIST PRODUCTS AVAILABLE ############
+url: .../products
+method: get
+bodyRequest: {}
+response: {
+    data: {
+        products: [
+            {
+                product_slug: ...,
+                name: ...,
+            },
+            ...
+        ]
+    },
+    message: '...'
+}
+
+
+
+############ GET LIST ITEM AVAILABLE ############
+url: .../products/{product_slug}
+method: get
+bodyRequest: {}
+response: {
+    data: {
+        items: [
+            {
+                code: ...,
+                name: ...,
+                denom: ...,
+                price: ...
+            },
+            ...
+        ]
+    },
+    message: '...'
+}
+
+
+
+############ REQUEST TOPUP ############
+url: .../transactions/{product_slug}/{item_code}
+method: post
+bodyRequest: {
+    id_player: ...,
+}
+response: {
+    data: {
+        trx: {
+            status: ...,
+            current_saldo: ...
+        } 
+    },
+    message: '...'
+}

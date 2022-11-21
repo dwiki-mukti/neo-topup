@@ -1,0 +1,13 @@
+
+
+penamaan variable
+- camelcase
+- singular-prular
+
+
+$products = [...]
+
+
+foreach($product as $product){
+
+}
