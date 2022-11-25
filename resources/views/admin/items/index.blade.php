@@ -55,23 +55,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($items as $data)
+                                @foreach ($items as $item)
                                     <tr>
                                         <td>
-                                            <div style="line-height: 14px">{{ $data->product->name }}</div>
-                                            <small style="font-size: 12px">{{ ucfirst($data->category) }}</small>
+                                            <div style="line-height: 14px">{{ $item->product->name }}</div>
+                                            <small style="font-size: 12px">{{ ucfirst($item->category) }}</small>
                                         </td>
-                                        <td>{{ $data->name }}</td>
-                                        <td>{{ $data->code }}</td>
-                                        <td>{{ $data->denom }}</td>
-                                        <td>{{ $data->price }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->code }}</td>
+                                        <td>{{ $item->denom }}</td>
+                                        <td>{{ $item->price }}</td>
                                         <td>
-                                            <form action="{{ route('admin.item.destroy', $data->id) }}" method="post"
+                                            <form action="{{ route('admin.item.destroy', $item->id) }}" method="post"
                                                 onsubmit="return confirm('Sure want to delete this data?')"
                                                 class="d-flex gap-1">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="{{ route('admin.item.edit', $data->id) }}"
+                                                <a href="{{ route('admin.item.edit', $item->id) }}"
                                                     class="btn btn-warning btn-sm mr-1">Edit</a>
                                                 <button type="submit"
                                                     class="btn btn-outline-danger btn-sm mr-1">Delete</button>
@@ -100,8 +100,8 @@
                     <div class="form-group">
                         <label for="new_item_game">Select Product</label>
                         <select name="new_item_product" id="new_item_product" class="form-control">
-                            @foreach ($product as $data)
-                                <option value="{{ $data->slug }}">{{ $data->name }}</option>
+                            @foreach ($product as $products)
+                                <option value="{{ $products->slug }}">{{ $products->name }}</option>
                             @endforeach
                         </select>
                     </div>

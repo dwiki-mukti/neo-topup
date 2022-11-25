@@ -54,11 +54,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($product as $data)
+                                @foreach ($product as $products)
                                     <tr>
                                         <td>
-                                            @if ($data->thumbnail)
-                                                <img src="{{ asset('storage/' . $data->thumbnail) }}"
+                                            @if ($products->thumbnail)
+                                                <img src="{{ asset('storage/' . $products->thumbnail) }}"
                                                     class="rounded" style="max-width: 100px" alt="...">
                                             @else
                                                 <div>
@@ -67,16 +67,16 @@
                                                 </div>
                                             @endif
                                         </td>
-                                        <td>{{ $data->name }}</td>
-                                        <td>{{ $data->slug }}</td>
-                                        <td>{{ $data->category }}</td>
+                                        <td>{{ $products->name }}</td>
+                                        <td>{{ $products->slug }}</td>
+                                        <td>{{ $products->category }}</td>
                                         <td>
-                                            <form action="{{ route('admin.product.destroy', $data->id) }}" method="post"
+                                            <form action="{{ route('admin.product.destroy', $products->id) }}" method="post"
                                                 onsubmit="return confirm('Sure want to delete this data?')"
                                                 class="d-flex gap-1">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="{{ route('admin.product.edit', $data->id) }}"
+                                                <a href="{{ route('admin.product.edit', $products->id) }}"
                                                     class="btn btn-warning btn-sm mr-1">Edit</a>
                                                 <button type="submit"
                                                     class="btn btn-outline-danger btn-sm mr-1">Delete</button>
