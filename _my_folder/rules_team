@@ -11,3 +11,27 @@ $products = [...]
 foreach($product as $product){
 
 }
+
+
+
+
+
+
+
+# backend:
+1. alvin
+2. awang
+1. galung
+
+# frontend:
+1. anang
+2. andra
+
+
+team_1: menu user
+- list data (tabel)
+- detail user:[profil user, riwayat transaksi user]
+
+team_2: menu transaksi
+- list transaksi
+- detail transaksi
