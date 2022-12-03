@@ -11,6 +11,7 @@ response: {
             {
                 product_slug: ...,
                 name: ...,
+                fields: ...,
             },
             ...
         ]
