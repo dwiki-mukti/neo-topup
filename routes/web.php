@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ItemController as AdminItemController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\LandingController;
 use App\Http\Controllers\Client\ProductController;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::group([
     'as' => 'admin.',
@@ -30,6 +31,7 @@ Route::group([
     Route::resource('/product', AdminProductController::class);
     Route::resource('/item', AdminItemController::class);
     Route::get('/item/create/{slug}', [AdminItemController::class, 'create'])->name('item.recreate');
+    Route::get('/user', [AdminUserController::class, 'index'])->name('user.index');
 });
 
 

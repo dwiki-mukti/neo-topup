@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ Route('admin.dashboard') }}" class="nav-link" id="bar-user">
+                    <a href="{{ Route('admin.user.index') }}" class="nav-link" id="bar-user">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             User
