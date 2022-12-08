@@ -47,9 +47,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
+    {    
+        $user = User::where('id', $id)->get();
+        return view('admin.user.detail', compact('user'), [
+            'title' => "User Detail",
+            'user' => User::findOrFail($id)
+        ]);
+    }  
 
     /**
      * Show the form for editing the specified resource.

@@ -32,6 +32,7 @@ Route::group([
     Route::resource('/item', AdminItemController::class);
     Route::get('/item/create/{slug}', [AdminItemController::class, 'create'])->name('item.recreate');
     Route::get('/user', [AdminUserController::class, 'index'])->name('user.index');
+    Route::resource('/user', AdminUserController::class);
 });
 
 
