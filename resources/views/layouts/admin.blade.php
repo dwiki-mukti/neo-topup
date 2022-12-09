@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | @yield('title')</title>
+    <title>Neo TopUp | @yield('title')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -27,14 +27,14 @@
         <!-- Preloader -->
         {{-- <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="{{ asset(env('APP_ICON')) }}" alt="AdminLTELogo" height="60" width="60">
-        </div> --}}
+    </div> --}}
 
-        @include('layouts.components.admin.navbar')
-        @include('layouts.components.admin.sidebar')
+    @include('layouts.components.admin.navbar')
+    @include('layouts.components.admin.sidebar')
 
-        @yield('content')
+    @yield('content')
 
-        {{-- <footer class="main-footer">
+    {{-- <footer class="main-footer">
             <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
@@ -42,12 +42,6 @@
             </div>
         </footer> --}}
     </div>
-
-
-
-
-
-
 
     <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
