@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ItemController as AdminItemController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\TransactionController as AdminTransactionController;
 use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\LandingController;
 use App\Http\Controllers\Client\ProductController;
@@ -33,6 +34,7 @@ Route::group([
     Route::get('/item/create/{slug}', [AdminItemController::class, 'create'])->name('item.recreate');
     Route::get('/user', [AdminUserController::class, 'index'])->name('user.index');
     Route::resource('/user', AdminUserController::class);
+    Route::resource('/transaction', AdminTransactionController::class);
 });
 
 

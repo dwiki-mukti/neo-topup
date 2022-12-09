@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'User')
+@section('title', 'Transaction')
 
 @section('content')
 <div class="content-wrapper">
@@ -7,25 +7,27 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-capitalize">User</h1>
+                    <h1 class="m-0 text-capitalize">Transaction</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right text-capitalize">
                         <li class="breadcrumb-item"><a href="{{ Route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">User</li>
+                        <li class="breadcrumb-item active">Transaction</li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
+
+
     <section class="content">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">User</h3>
+                    <h3 class="card-title">Transaction</h3>
                 </div>
                 <div class="card-header">
-                    <div id="btn-detail" class="btn btn-primary btn-sm mr-1">Create New User</div>
+                    <div id="btn-create" class="btn btn-primary btn-sm mr-1">Create New Item</div>
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right"
@@ -43,34 +45,42 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Email</th>
-                                <th>Saldo Coin</th>
+                                <th>Id</th>
+                                <th>User</th>
+                                <th>Payment Id</th>
+                                <th>Invoice</th>
+                                <th>Nominal</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user as $users)
-                            @if($users->role == "client")
+                            @foreach ($items as $item)
                             <tr>
-                                <td>{{ $users->name }}</td>
-                                <td>{{ $users->role }}</td>
-                                <td>{{ $users->email }}</td>
-                                <td>{{ $users->saldo_coin }}</td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->user->name }}</td>
+                                <td>{{ $item->payment_id }}</td>
+                                <td>{{ $item->invoice }}</td>
+                                <td>{{ $item-> nominal }}</td>
                                 <td>
-                                    <form action="{{ route('admin.item.destroy', $users->id) }}" method="post"
+                                    @if($item->status=="success")
+                                    <p class="badge badge-success">{{$item->status}}</p>
+                                    @else
+                                    <p class="badge badge-danger">{{$item->status}}</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.transaction.destroy', $item->id) }}" method="post"
                                         onsubmit="return confirm('Sure want to delete this data?')"
                                         class="d-flex gap-1">
                                         @csrf
                                         @method('delete')
+                                        <a href="{{ route('admin.transaction.show', $item->id) }}"
+                                            class="btn btn-primary btn-sm mr-1">Detail</a>
                                         <button type="submit" class="btn btn-danger btn-sm mr-1">Delete</button>
                                     </form>
-                                    <a id="btn-detail" href="{{ route('admin.user.show', $users->id) }}"
-                                        class="btn btn-primary btn-sm mr-1">Detail</a>
                                 </td>
                             </tr>
-                            @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -93,8 +103,8 @@
                 <div class="form-group">
                     <label for="new_item_game">Select Product</label>
                     <select name="new_item_product" id="new_item_product" class="form-control">
-                        @foreach ($user as $users)
-                        <option value="{{ $users->slug }}">{{ $users->name }}</option>
+                        @foreach ($product as $products)
+                        <option value="{{ $products->slug }}">{{ $products->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -115,8 +125,8 @@
 @section('script')
 <script>
 $(document).ready(function() {
-    $('#bar-user').addClass('active')
-    $('#btn-detail').click(function() {
+    $('#bar-transaksi').addClass('active')
+    $('#btn-create').click(function() {
         $('#exampleModalCenter').modal('show')
     })
     $('#close_create_item').click(function() {

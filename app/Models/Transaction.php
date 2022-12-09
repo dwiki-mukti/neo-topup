@@ -17,4 +17,8 @@ class Transaction extends Model
         'status',
         'last_updated_status',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -33,7 +33,6 @@
                                 <th>Role</th>
                                 <th>Email</th>
                                 <th>Saldo Coin</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
