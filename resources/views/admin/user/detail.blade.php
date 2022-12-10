@@ -50,26 +50,28 @@
                             <dl>
                                 <dt>Transaction's History</dt>
                                 
-                                @foreach ($transaction as $trx)
+                                @foreach ($transaction as $transactions)
 
                                 <dt>ID Transaction</dt>
-                                <dd>{{ $trx->id }}</dd>
+                                <dd>{{ $transactions->id }}</dd>
 
                                 <dt>Invoice</dt>
-                                <dd>{{ $trx->invoice }}</dd>
+                                <dd>{{ $transactions->invoice }}</dd>
 
                                 <dt>Payment Id</dt>
-                                <dd>{{ $trx->payment_id }}</dd>
+                                <dd>{{ $transactions->payment_id }}</dd>
 
                                 <dt>Nominal</dt>
-                                <dd>{{ $trx-> nominal }}</dd>
+                                <dd>{{ $transactions-> nominal }}</dd>
 
                                 <dt>Status</dt>
                                 <dd>
-                                    @if($trx->status=="success")
-                                    <p class="badge badge-success">{{$trx->status}}</p>
+                                    @if($transactions->status=="success")
+                                    <p class="badge badge-success">{{$transactions->status}}</p>
+                                    @elseif($transactions->status=="waiting")
+                                        <p class="badge badge-warning">{{$transactions->status}}</p>
                                     @else
-                                    <p class="badge badge-danger">{{$trx->status}}</p>
+                                        <p class="badge badge-danger">{{$transactions->status}}</p>
                                     @endif
                                 </dd>
                             </dl>
