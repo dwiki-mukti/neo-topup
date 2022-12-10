@@ -25,27 +25,58 @@
                 <div class="card-header">
                     <h3 class="card-title">{{ $title }}</h3>
                 </div>
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Email</th>
-                                <th>Saldo Coin</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                <div class="row p-1">
+                    <div class="col-md-7 p-2 border-right">
+                        <div class="card-body">
                             @foreach ($user as $users)
-                            <tr>
-                                <td>{{ $users->name }}</td>
-                                <td>{{ $users->role }}</td>
-                                <td>{{ $users->email }}</td>
-                                <td>{{ $users->saldo_coin }}</td>
-                            </tr>
+                            <dl>
+                                <dt>Name</dt>
+                                <dd>{{ $users->name }}</dd>
+
+                                <dt>Role</dt>
+                                <dd>{{ $users->role }}</dd>
+
+                                <dt>E-mail</dt>
+                                <dd>{{ $users->email }}</dd>
+
+                                <dt>Saldo Coin</dt>
+                                <dd>{{ $users->saldo_coin }}</dd>
+                            </dl>
                             @endforeach
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <dl>
+                                <dt>Transaction's History</dt>
+                                
+                                @foreach ($transaction as $trx)
+
+                                <dt>ID Transaction</dt>
+                                <dd>{{ $trx->id }}</dd>
+
+                                <dt>Invoice</dt>
+                                <dd>{{ $trx->invoice }}</dd>
+
+                                <dt>Payment Id</dt>
+                                <dd>{{ $trx->payment_id }}</dd>
+
+                                <dt>Nominal</dt>
+                                <dd>{{ $trx-> nominal }}</dd>
+
+                                <dt>Status</dt>
+                                <dd>
+                                    @if($trx->status=="success")
+                                    <p class="badge badge-success">{{$trx->status}}</p>
+                                    @else
+                                    <p class="badge badge-danger">{{$trx->status}}</p>
+                                    @endif
+                                </dd>
+                            </dl>
+                            @endforeach
+                            <a class="btn btn-primary mt-2 w-100" href='#' onclick="history.back()">Back</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

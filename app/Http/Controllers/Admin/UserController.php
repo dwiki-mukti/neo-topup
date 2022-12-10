@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Transaction;
 
 class UserController extends Controller
 {
@@ -47,13 +48,15 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {    
+    {
         $user = User::where('id', $id)->get();
-        return view('admin.user.detail', compact('user'), [
+        $transaction = Transaction::where('user_id', $id)->get();
+        return view('admin.user.detail', compact('user', 'transaction'), [
             'title' => "User Detail",
-            'user' => User::findOrFail($id)
+            'user' => User::findOrFail($id),
+            'transaction' => Transaction::find($id)
         ]);
-    }  
+    }
 
     /**
      * Show the form for editing the specified resource.
