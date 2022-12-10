@@ -12,10 +12,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right text-capitalize">
                         <li class="breadcrumb-item"><a href="{{ Route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ Route('admin.transaction.index') }}">Transaction</a>
-                        </li>
+                        <li class="breadcrumb-item"><a href="{{ Route('admin.transaction.index') }}">Transaction</a></li>
                         <li class="breadcrumb-item active">Transaction Detail</li>
-
                     </ol>
                 </div>
             </div>
@@ -53,13 +51,17 @@
                                 <dd>{{ $item-> nominal }}</dd>
 
                                 <dt>Status</dt>
-                                <dd>
+                                <dt>
                                     @if($item->status=="success")
-                                    <p class="badge badge-success">{{$item->status}}</p>
+                                        <p class="badge badge-success">{{$item->status}}</p>
+                                    @elseif($item->status=="waiting")
+                                        <p class="badge badge-warning">{{$item->status}}</p>
                                     @else
-                                    <p class="badge badge-danger">{{$item->status}}</p>
+                                        <p class="badge badge-danger">{{$item->status}}</p>
                                     @endif
-                                </dd>
+                                    <small> - Updated At : {{$item->last_updated_status}}</small>
+                                </dt>
+                                <dd></dd>
                             </dl>
                             @endforeach
                             <a class="btn btn-primary w-100" href='#' onclick="history.back()">Back</a>

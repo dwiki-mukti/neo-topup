@@ -8,6 +8,7 @@ use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\LandingController;
 use App\Http\Controllers\Client\ProductController;
 use App\Http\Controllers\Client\ProfileController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,19 +26,23 @@ Route::group([
     'as' => 'admin.',
     'prefix' => 'admin'
 ], function () {
-    Route::get('/', function () {
+    Route::get('/',   function () {
         return view('admin.dashboard');
     })->name('dashboard');
+     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('/product', AdminProductController::class);
     Route::resource('/item', AdminItemController::class);
     Route::get('/item/create/{slug}', [AdminItemController::class, 'create'])->name('item.recreate');
     Route::get('/user', [AdminUserController::class, 'index'])->name('user.index');
+    
+    Route::get('/transaction/success', [AdminTransactionController::class, 'success'])->name('transaction.success');
+    Route::get('/transaction/waiting', [AdminTransactionController::class, 'waiting'])->name('transaction.waiting');
+    Route::get('/transaction/failed', [AdminTransactionController::class, 'failed'])->name('transaction.failed');
+
     Route::resource('/user', AdminUserController::class);
     Route::resource('/transaction', AdminTransactionController::class);
 });
-
-
 
 
 

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Item;
+use App\Models\Product;
 use App\Models\Transaction;
-use App\Models\TransactionDetail;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class TransactionController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +17,11 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
-        $items = Transaction::all();
-        $product = TransactionDetail::all();
-        return view('admin.transaction.index', compact('items', 'product'));
+        $items = Item::count();
+        $products = Product::count();
+        $transactions = Transaction::count();
+        $users = User::count();
+        return view('admin.dashboard',compact('items','products','transactions','users'));
     }
 
     /**
@@ -50,12 +52,10 @@ class TransactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {    
-        $items = Transaction::where('id', $id)->get();
-        return view('admin.transaction.detail', compact('items'), [
-            'items' => Transaction::findOrFail($id)
-        ]);
+    {
+        //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -87,29 +87,6 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        $items = Transaction::find($id);
-        $items->delete();
-
-        return back();
-    }
-
-    //filter status
-    public function success()
-    {
-        $items = Transaction::where('status', 'success')->get();
-        $product = TransactionDetail::all();
-        return view('admin.transaction.index', compact('items', 'product'));
-    }
-    public function waiting()
-    {
-        $items = Transaction::where('status', 'waiting')->get();
-        $product = TransactionDetail::all();
-        return view('admin.transaction.index', compact('items', 'product'));
-    }
-    public function failed()
-    {
-        $items = Transaction::where('status', 'failed')->get();
-        $product = TransactionDetail::all();
-        return view('admin.transaction.index', compact('items', 'product'));
+        //
     }
 }

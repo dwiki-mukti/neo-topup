@@ -25,13 +25,26 @@
                 <div class="card-header">
                     <h3 class="card-title">Transaction</h3>
                 </div>
+
                 <div class="card-header">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                            </button>
+                    <a href="{{ route('admin.transaction.index') }}" 
+                        class="btn btn-outline-secondary btn-sm mr-1">All</a>
+                    <a href="{{ route('admin.transaction.success') }}"
+                        class="btn btn-outline-secondary btn-sm mr-1">Success</a>
+                    <a href="{{ route('admin.transaction.waiting') }}"
+                        class="btn btn-outline-secondary btn-sm mr-1">Waiting</a>
+                    <a href="{{ route('admin.transaction.failed') }}"
+                        class="btn btn-outline-secondary btn-sm mr-1">Failed</a>
+
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control float-right"
+                                placeholder="Search">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,8 +72,10 @@
                                 <td>
                                     @if($item->status=="success")
                                     <p class="badge badge-success">{{$item->status}}</p>
+                                    @elseif($item->status=="waiting")
+                                        <p class="badge badge-warning">{{$item->status}}</p>
                                     @else
-                                    <p class="badge badge-danger">{{$item->status}}</p>
+                                        <p class="badge badge-danger">{{$item->status}}</p>
                                     @endif
                                 </td>
                                 <td>
