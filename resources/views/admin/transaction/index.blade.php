@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="card-header">
-                    <a href="{{ route('admin.transaction.index') }}" 
+                    <a href="{{ route('admin.transaction.index') }}"
                         class="btn btn-outline-secondary btn-sm mr-1">All</a>
                     <a href="{{ route('admin.transaction.success') }}"
                         class="btn btn-outline-secondary btn-sm mr-1">Success</a>
@@ -48,8 +48,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                <div class="card-body table-responsive p-3">
+                    <table id="dataTable" class="table table-hover text-nowrap">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -73,9 +73,9 @@
                                     @if($item->status=="success")
                                     <p class="badge badge-success">{{$item->status}}</p>
                                     @elseif($item->status=="waiting")
-                                        <p class="badge badge-warning">{{$item->status}}</p>
+                                    <p class="badge badge-warning">{{$item->status}}</p>
                                     @else
-                                        <p class="badge badge-danger">{{$item->status}}</p>
+                                    <p class="badge badge-danger">{{$item->status}}</p>
                                     @endif
                                 </td>
                                 <td>
@@ -103,16 +103,7 @@
 @section('script')
 <script>
 $(document).ready(function() {
-    $('#bar-transaksi').addClass('active')
-    $('#btn-create').click(function() {
-        $('#exampleModalCenter').modal('show')
-    })
-    $('#close_create_item').click(function() {
-        $('#exampleModalCenter').modal('hide')
-    })
-    $('#new_item_next').click(function() {
-        location.href = "{{ route('admin.item.create') }}/" + $('#new_item_product').val()
-    })
+    $('#bar-transaction').addClass('active')
 })
 </script>
 @endsection

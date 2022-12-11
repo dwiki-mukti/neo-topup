@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ Route('admin.transaction.index') }}" class="nav-link" id="bar-transaksi">
+                    <a href="{{ Route('admin.transaction.index') }}" class="nav-link" id="bar-transaction">
                         <i class="nav-icon fas fa-chart-bar"></i>
                         <p>
                             Transaction
